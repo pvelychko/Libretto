@@ -8,10 +8,18 @@
 	<description>Rest client for the public library system with basic with Spring Security and Basic authentication.</description>
 	
 	<properties>
+		<persistence.api.version>1.0.2</persistence.api.version>
 		<spring.security.version>4.0.3.RELEASE</spring.security.version>
 	</properties>
 	
 	<dependencies>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>${persistence.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	
 		<!-- Spring security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
