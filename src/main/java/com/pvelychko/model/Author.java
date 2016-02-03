@@ -75,7 +75,7 @@ public class Author extends BaseItem {
             return true;
         if (obj == null)
             return false;
-        if (!(obj instanceof UserProfile))
+        if (!(obj instanceof Author))
             return false;
         Author other = (Author) obj;
         if (super.getId() != other.getId())

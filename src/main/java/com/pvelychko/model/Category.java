@@ -47,7 +47,7 @@ public class Category extends BaseItem {
             return true;
         if (obj == null)
             return false;
-        if (!(obj instanceof UserProfile))
+        if (!(obj instanceof Category))
             return false;
         Category other = (Category) obj;
         if (super.getId() != other.getId())

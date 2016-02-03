@@ -9,6 +9,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.pvelychko.model.enums.Language;
+
 @Entity
 @Table(name="Books")
 public class Book extends BaseItem {
@@ -35,10 +37,10 @@ public class Book extends BaseItem {
 	@Column(nullable = false)
 	private Language language;
 	
-	@Column
+	@ManyToOne
+	@JoinColumn(name = "publisherId")
 	private Publisher publisher;
-	
-	private 
+		
 	// Isbn10
 	public String getIsbn10() {
 		return isbn10;
@@ -111,7 +113,7 @@ public class Book extends BaseItem {
             return true;
         if (obj == null)
             return false;
-        if (!(obj instanceof UserProfile))
+        if (!(obj instanceof Book))
             return false;
         Book other = (Book) obj;
         if (super.getId() != other.getId())

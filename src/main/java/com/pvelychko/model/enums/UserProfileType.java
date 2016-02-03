@@ -1,4 +1,4 @@
-package com.pvelychko.model;
+package com.pvelychko.model.enums;
 
 public enum UserProfileType {
     USER("USER"),

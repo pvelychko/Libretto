@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.pvelychko.model.enums.UserProfileType;
+
 @Entity
 @Table(name="UserProfile")
 public class UserProfile extends BaseItem {
