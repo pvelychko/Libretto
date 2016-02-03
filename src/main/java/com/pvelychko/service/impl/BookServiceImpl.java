@@ -1,4 +1,4 @@
-package com.pvelychko.service;
+package com.pvelychko.service.impl;
 
 import java.util.List;
 
@@ -7,18 +7,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.pvelychko.domain.Book;
+import com.pvelychko.service.BookOwnRepository;
+import com.pvelychko.service.BookQueryRepositoryExample;
+import com.pvelychko.service.BookRepository;
+import com.pvelychko.service.BookService;
 
 @Service
 @Transactional
 public class BookServiceImpl implements BookService {
+	
 	@Autowired
 	private BookRepository bookRepository;
 	@Autowired
 	private BookOwnRepository bookOwnRepository;
 	@Autowired
 	private BookQueryRepositoryExample bookQueryRepository;
-	@Autowired
-	private BookNamedQueryRepositoryExample bookNamedQueryRepository;	
 
 	public List<Book> findAll() {
 		return bookRepository.findAll();
@@ -32,31 +35,32 @@ public class BookServiceImpl implements BookService {
 		return bookQueryRepository.findByNameMatch(name);
 	}
 
-	public List<Book> findByNamedParam(String name, String author, long price) {
-		return bookQueryRepository.findByNamedParam(name, author, price);
-	}
-
-	public List<Book> findByPriceRange(long price1, long price2) {
-		return bookQueryRepository.findByPriceRange(price1, price2);
-	}
-
-	public List<Book> findByPrice(long price) {
-		return bookNamedQueryRepository.findByPrice(price);
-	}
-
 	public List<Book> findByNameAndAuthor(String name, String author) {
 		return bookOwnRepository.findByNameAndAuthor(name, author);
 	}
 
-	public void saveBook(Book book) {
+	public void save(Book book) {
 		bookRepository.save(book);
 	}
 
-	public Book findOne(long id) {
+	public Book find(int id) {
 		return bookRepository.findOne(id);
 	}
 
-	public void delete(long id) {
+	public void delete(int id) {
 		bookRepository.delete(id);
 	}
+
+	public List<Book> findByAuthor(String author) {
+		return bookOwnRepository.findByAuthor(author);
+	}
+
+	public void borrow(int studentId, int bookId) {
+		bookQueryRepository.borrow(studentId, bookId);
+	}
+	
+	public void bringBack(int bookId) {
+		bookQueryRepository.bringBack(bookId);
+	}
+	
 }

@@ -16,61 +16,53 @@ public class BooksController {
 	@Autowired
 	private BookService bookService;
 
-	@RequestMapping(value = "/add/{id}/{name}/{author}/{price}")
-	public Book addBook(@PathVariable long id, @PathVariable String name, @PathVariable String author,
-			@PathVariable long price) {
+	@RequestMapping(value = "/add/{name}/{author}/{amountOfPages}")
+	public Book addBook(@PathVariable String name, @PathVariable String author,
+			@PathVariable int amountOfPages) {
 		Book book = new Book();
-		book.setId(id);
 		book.setName(name);
 		book.setAuthor(author);
-		book.setPrice(price);
-		bookService.saveBook(book);
+		book.setAmountOfPages(amountOfPages);
+		bookService.save(book);
 		return book;
 	}
+	
 	@RequestMapping(value = "/delete/{id}")
-	public void deleteBook(@PathVariable long id) {
-		Book book = new Book();
-		book.setId(id);
+	public void deleteBook(@PathVariable int id) {
 		bookService.delete(id);
 	}
+	
 	@RequestMapping(value = "/")
 	public List<Book> getBooks() {
 		return bookService.findAll();
 	}
+	
 	@RequestMapping(value = "/{id}")
 	public Book getBook(@PathVariable int id) {
-		Book book = bookService.findOne(id);
+		Book book = bookService.find(id);
 		return book;
 	}
+	
 	@RequestMapping(value = "/search/name/{name}")
 	public List<Book> getBookByName(@PathVariable String name) {
 		List<Book> books = bookService.findByName(name);
 		return books;
 	}
-	@RequestMapping(value = "/search/name/match/{name}")
-	public List<Book> getBookByNameMatch(@PathVariable String name) {
-		List<Book> books = bookService.findByNameMatch(name);
-		return books;
-	}
-	@RequestMapping(value = "/search/param/{name}/{author}/{price}")
-	public List<Book> getBookByNamedParam(@PathVariable String name, @PathVariable String author, @PathVariable long price) {
-		List<Book> books = bookService.findByNamedParam(name, author, price);
-		return books;
-	}
-	
-	@RequestMapping(value = "/search/price/{price}")
-	public List<Book> getBookByPrice(@PathVariable int price) {
-		List<Book> books = bookService.findByPrice(price);
-		return books;
-	}
-	@RequestMapping(value = "/search/price/{price1}/{price2}")
-	public List<Book> getBookByPriceRange(@PathVariable int price1, @PathVariable int price2) {
-		List<Book> books = bookService.findByPriceRange(price1, price2);
-		return books;
-	}
+
 	@RequestMapping(value = "/search/{name}/{author}")
 	public List<Book> getBookByNameAndAuthor(@PathVariable String name, @PathVariable String author) {
 		List<Book> books = bookService.findByNameAndAuthor(name, author);
 		return books;
 	}
+	
+	@RequestMapping(value = "/borrow/{studentId}/{bookId}")
+	public void borrowBook(@PathVariable Integer studentId, @PathVariable Integer bookId) {
+		bookService.borrow(studentId, bookId);
+	}
+	
+	@RequestMapping(value = "/return/{studentId}/{bookId}")
+	public void returnBook(@PathVariable Integer bookId) {
+		bookService.bringBack(bookId);
+	}
+	
 }

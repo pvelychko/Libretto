@@ -1,46 +1,71 @@
 package com.pvelychko.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-@NamedQuery(name="Book.findByPrice",query="select name,author,price from Book b where b.price=?1")
-public class Book implements Serializable{
-	private static final long serialVersionUID = 1L;
-	@Id
-	Long id;
-	@Column(name="name")
-	String name;
-	@Column(name="author")
-	String author;
-	@Column(name="price")
-	Long price;	
+@Table(name="Books")
+public class Book extends BaseItem {
+	private static final long serialVersionUID = 5254351674848793215L;
+	
+	@Column(name="author", nullable=false)
+	private String author;
+	
+	@Column(name="amountOfPages", nullable=false)
+	private Integer amountOfPages;
+	
+	@ManyToOne
+	@JoinColumn(name = "categoryId")
+	private Category category;
+	
+	@Column(name="isbn13", nullable=false)
+	private String isbn13;
+	
+	@ManyToOne
+	@JoinColumn(name = "studentId")
+	private Student studentId;
+	
+	// Author
 	public String getAuthor() {
 		return author;
 	}
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public Long getPrice() {
-		return price;
+	
+	// AmountOfPages
+	public Integer getAmountOfPages() {
+		return amountOfPages;
 	}
-	public void setPrice(Long price) {
-		this.price = price;
-	}	
-	public Long getId() {
-		return id;
+	public void setAmountOfPages(Integer amountOfPages) {
+		this.amountOfPages = amountOfPages;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	
+	// Category
+	public Category getCategory() {
+		return category;
 	}
-	public String getName() {
-		return name;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}	
+	
+	// Isbn13
+	public String getIsbn13() {
+		return isbn13;
+	}
+	public void setIsbn13(String isbn13) {
+		this.isbn13 = isbn13;
+	}
+	
+	// StudentId
+	public Student getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(Student studentId) {
+		this.studentId = studentId;
+	}
+	
 }

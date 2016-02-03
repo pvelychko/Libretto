@@ -5,14 +5,19 @@ import java.util.List;
 import com.pvelychko.domain.Book;
 
 public interface BookService {
+	
+	public Book find(int id);
 	public List<Book> findAll();
-	public void saveBook(Book book);
-	public Book findOne(long id);
-	public void delete(long id);
+	
+	public void save(Book book);
+	
+	public void delete(int id);
+	
 	public List<Book> findByName(String name);
+	public List<Book> findByAuthor(String author);
 	public List<Book> findByNameAndAuthor(String name, String author);
-	public List<Book> findByPrice(long price);
-	List<Book> findByPriceRange(long price1, long price2);
-	List<Book> findByNameMatch(String name);
-	List<Book> findByNamedParam(String name, String author, long price);
+
+	public void borrow(int studentId, int bookId);
+	public void bringBack(int bookId);
+	
 }
