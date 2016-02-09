@@ -1,5 +1,6 @@
 package com.pvelychko.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,20 @@ public class BooksController {
 	
 	@RequestMapping(value = "/")
 	public List<Book> getBooks() {
-		return bookService.findAll();
+		List<Book> allBooks = new ArrayList<>();
+		allBooks.addAll(getAvailableBooks());
+		allBooks.addAll(getBorrowedBooks());
+		return allBooks;
+	}
+	
+	@RequestMapping(value = "/available")
+	public List<Book> getAvailableBooks() {
+		return bookService.findAllAvailable();
+	}
+	
+	@RequestMapping(value = "/borrowed")
+	public List<Book> getBorrowedBooks() {
+		return bookService.findAllBorrowed();
 	}
 	
 	@RequestMapping(value = "/{id}")

@@ -7,7 +7,8 @@ import com.pvelychko.domain.Book;
 public interface BookService {
 	
 	public Book find(int id);
-	public List<Book> findAll();
+	public List<Book> findAllAvailable();
+	public List<Book> findAllBorrowed();
 	
 	public void save(Book book);
 	

@@ -26,7 +26,7 @@ public class Book extends BaseItem {
 	
 	@ManyToOne
 	@JoinColumn(name = "studentId")
-	private Student studentId;
+	private Student student;
 	
 	// Author
 	public String getAuthor() {
@@ -60,12 +60,12 @@ public class Book extends BaseItem {
 		this.isbn13 = isbn13;
 	}
 	
-	// StudentId
-	public Student getStudentId() {
-		return studentId;
+	// Student
+	public Student getStudent() {
+		return student;
 	}
-	public void setStudentId(Student studentId) {
-		this.studentId = studentId;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 	
 }
