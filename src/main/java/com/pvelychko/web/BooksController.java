@@ -33,13 +33,13 @@ public class BooksController {
 		bookService.delete(id);
 	}
 	
-	@RequestMapping(value = "/")
-	public List<Book> getBooks() {
-		List<Book> allBooks = new ArrayList<>();
-		allBooks.addAll(getAvailableBooks());
-		allBooks.addAll(getBorrowedBooks());
-		return allBooks;
-	}
+//	@RequestMapping(value = "/")
+//	public List<Book> getBooks() {
+//		List<Book> allBooks = new ArrayList<>();
+//		allBooks.addAll(getAvailableBooks());
+//		allBooks.addAll(getBorrowedBooks());
+//		return allBooks;
+//	}
 	
 	@RequestMapping(value = "/available")
 	public List<Book> getAvailableBooks() {
