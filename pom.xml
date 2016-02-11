@@ -15,6 +15,15 @@
 	
 	<build>
 		<finalName>libretto</finalName>
+<!-- 		<resources> -->
+<!-- 		    <resource> -->
+<!-- 		        <targetPath>/webapp</targetPath> -->
+<!-- 		        <directory>src/main/webapp</directory> -->
+<!-- 		    </resource> -->
+<!-- 		    <resource> -->
+<!-- 		        <directory>src/main/resources</directory> -->
+<!-- 		    </resource> -->
+<!-- 		</resources> -->
 	</build>
 
 	<dependencies>
@@ -65,7 +74,7 @@
         <start-class>com.pvelychko.Application</start-class>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
         <mysql.connector.version>5.1.34</mysql.connector.version>
 	</properties>
 	

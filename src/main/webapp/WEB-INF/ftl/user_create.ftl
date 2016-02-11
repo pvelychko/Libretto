@@ -16,7 +16,7 @@
 	
 	<h1>Create a new user</h1>
 	
-	<form role="form" name="form" action="" method="post">
+	<form role="form" name="form" action="./create" method="post">
 	    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	
 	    <div>
