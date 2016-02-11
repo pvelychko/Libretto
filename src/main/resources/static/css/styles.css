@@ -1,5 +1,6 @@
 .navbar-brand > img {
 	max-height: 100%;
+	float: right;
 }
 
 .background {
@@ -24,10 +25,6 @@ img.dimmed {
 	opacity: 0.25;
 }
 
-.collapsing {
-    -webkit-transition: none;
-    transition: none;
-}
 .navbar-collapse.collapse.in {
     background-color: #fff;
 }
@@ -60,4 +57,17 @@ button.navbar-toggle.collapsed {
 }
 button.navbar-toggle, button.navbar-toggle.collapsed:HOVER, button.navbar-toggle.collapsed:FOCUS {
 	border: 1px solid #777;
+}
+.table-bordered,
+.table-bordered > tbody > tr > td, 
+.table-bordered > tbody > tr > th, 
+.table-bordered > tfoot > tr > td, 
+.table-bordered > tfoot > tr > th, 
+.table-bordered > thead > tr > td, 
+.table-bordered > thead > tr > th {
+    border: 1px solid #777;
+}
+
+.semi-transparent {
+	background:rgba(245,245,245,0.5);
 }

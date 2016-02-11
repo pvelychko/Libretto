@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Home page</title>
+		<title>Books</title>
 	    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"></meta>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 		<meta content="IE=9" http-equiv="X-UA-Compatible"></meta>
@@ -17,7 +17,7 @@
 <body>
 	<img src="./images/background.png" class="background grayscale dimmed"></img>
 
-	<nav class="navbar navbar-static-top">
+	<nav class="navbar navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href=".">
@@ -30,7 +30,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href=".">
+				<a class="navbar-brand" href="#">
 					Library
 				</a>
 			</div>
@@ -70,36 +70,32 @@
 	    			</#if>
 				</ul>
 			</div>
-				
-				
 		</div>
     </nav>
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h1 class="text-center">ALL BOOKS</h1>
-				<table class="table table-bordered semi-transparent">
-				    <thead>
-					    <tr>
-					        <th>Title</th>
-					        <th>Author</th>
-					        <th>Check</th>
-					    </tr>
-				    </thead>
-				    <tbody>
-					    <#list books as book>
-						    <tr>
-						        <td>${book.name}</td>
-						        <td>${book.author}</td>
-						        <td></td>
-						    </tr>
-					    </#list>
-				    </tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	
+    
+    <div class="container">
+    	<h1>List of Books</h1>
+		<table class="table">
+		    <thead>
+			    <tr>
+			        <th>Name</th>
+			        <th>Author</th>
+			        <th>Amount of pages</th>
+			    </tr>
+		    </thead>
+		    <tbody>
+			    <#books users as book>
+				    <tr>
+				        <td>${book.name}</td>
+				        <td>${book.author}</td>
+				        <td>${book.amountOfPages}</td>
+				    </tr>
+				    <#else>
+					<p>No users</p>
+			    </#list>
+		    </tbody>
+		</table>
+    </div>
+
 </body>
 </html>

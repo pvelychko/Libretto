@@ -8,30 +8,35 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.pvelychko.service.user.BookService;
 
 @Controller
-public class HomeController {
+public class BooksController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(BooksController.class);
     private final BookService bookService;
-    
+
     @Autowired
-    public HomeController(BookService bookService) {
+    public BooksController(BookService bookService) {
         this.bookService = bookService;
     }
-    
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getHomePage(@ModelAttribute("model") ModelMap model) {
-        LOGGER.debug("Getting home page");
-        
+
+    /**
+     * Saves the static list of users in model and renders it 
+     * via freemarker template.
+     * 
+     * @param model 
+     * @return The index view (FTL)
+     */
+    @RequestMapping(value = "/books", method = RequestMethod.GET)
+    public String books(@ModelAttribute("model") ModelMap model) {
         LOGGER.debug("Getting books page");
         
         model.addAttribute("books", bookService.getAllBooks());
         
-        return "home";
+        return "books";
     }
 
 }
