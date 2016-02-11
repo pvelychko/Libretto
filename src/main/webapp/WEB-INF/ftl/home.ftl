@@ -4,15 +4,19 @@
 <html lang="en">
 	<head>
 		<title>Home page</title>
-	    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/png" href="./imgages/favicon.ico" />
-		
-		<link rel="stylesheet" href="./css/bootstrap.min.css" />
-		<link rel="stylesheet" href="./css/styles.css" />
+	    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+		<meta content="IE=9" http-equiv="X-UA-Compatible"></meta>
+		<link rel="icon" type="image/png" href="./images/favicon.ico"></link>
+		<link rel="stylesheet" href="./css/bootstrap.min.css"></link>
+		<link rel="stylesheet" href="./css/styles.css"></link>
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/bootstrap.min.js"></script>
 	</head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<img src="./images/background.png" class="background grayscale dimmed"></img>
+
+	<nav class="navbar navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">
@@ -26,53 +30,50 @@
 		            <span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#">
-					Project name
+					Library
 				</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
+				<form action="./logout" method="post">
+				<ul class="nav navbar-nav pull-right">
 					<li class="active">
-						<a href="#">Home</a>
+						<a href="./../">Home</a>
 					</li>
-					<li>
-						<a href="#about">About</a>
-					</li>
-					<li>
-						<a href="#contact">Contact</a>
-					</li>
+					<#if !currentUser??>
+						<li class="divider-vertical hidden-xs hidden-sm" />
+						<li>
+							<a href="./login" class="text-warning">Log in</a>
+						</li>
+					</#if>
+	    			<#if currentUser?? && currentUser.role == "ADMIN">
+				        <li class="divider-vertical hidden-xs hidden-sm" />
+				        <li>
+				        	<a href="./user/create">Create a new user</a>
+				        </li>
+				        <li class="divider-vertical hidden-xs hidden-sm" />
+				        <li>
+				        	<a href="./users">View all users</a>
+				        </li>
+				    </#if>
+				    <#if currentUser??>
+	    				<li class="divider-vertical hidden-xs hidden-sm" />
+						<li>
+				        	<a href="./user/${currentUser.id}">${currentUser.name}</a>
+				        </li>
+				        <li class="divider-vertical hidden-xs hidden-sm" />
+						<li class="hasbutton">
+							<form action="./logout" method="post">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								<button type="submit" class="btn btn-danger">Log out</button>
+				            </form>
+						</li>
+	    			</#if>
 				</ul>
+				</form>
 			</div>
 		</div>
     </nav>
 
-
-	<nav role="navigation">
-	    <ul>
-	    <#if !currentUser??>
-	        <li><a href="./login">Log in</a></li>
-	    </#if>
-	    <#if currentUser??>
-	        <li>
-	            <form action="./logout" method="post">
-	                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	                <button type="submit">Log out</button>
-	            </form>
-	        </li>
-	        <li>
-	        	<a href="./user/${currentUser.id}">View myself</a>
-	        </li>
-	    </#if>
-	    <#if currentUser?? && currentUser.role == "ADMIN">
-	        <li>
-	        	<a href="./user/create">Create a new user</a>
-	        </li>
-	        <li>
-	        	<a href="./users">View all users</a>
-	        </li>
-	    </#if>
-	    </ul>
-	</nav>
 	
-	<script type="text/javascript" src="./js/bootstrap.min.js" />
 </body>
 </html>
