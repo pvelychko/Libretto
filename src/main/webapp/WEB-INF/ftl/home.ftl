@@ -6,16 +6,17 @@
 		<title>Home page</title>
 	    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/png" href="./img/favicon.ico" />
+		<link rel="icon" type="image/png" href="./imgages/favicon.ico" />
 		
 		<link rel="stylesheet" href="./css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./css/styles.css" />
 	</head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">
-					<img alt="Library" src="./img/logo.png" />
+					<img alt="Library" src="./images/logo.png" />
 				</a>
 				
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
