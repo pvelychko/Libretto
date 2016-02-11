@@ -2,6 +2,7 @@ package com.pvelychko.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -15,7 +16,7 @@ public class Book extends BaseItem {
 	private String author;
 	
 	@Column(name="amountOfPages", nullable=false)
-	private Integer amountOfPages;
+	private int amountOfPages;
 	
 	@ManyToOne
 	@JoinColumn(name = "categoryId")
@@ -26,7 +27,7 @@ public class Book extends BaseItem {
 	
 	@ManyToOne
 	@JoinColumn(name = "studentId")
-	private Student student;
+	private User student;
 	
 	// Author
 	public String getAuthor() {
@@ -37,10 +38,10 @@ public class Book extends BaseItem {
 	}
 	
 	// AmountOfPages
-	public Integer getAmountOfPages() {
+	public int getAmountOfPages() {
 		return amountOfPages;
 	}
-	public void setAmountOfPages(Integer amountOfPages) {
+	public void setAmountOfPages(int amountOfPages) {
 		this.amountOfPages = amountOfPages;
 	}
 	
@@ -61,10 +62,10 @@ public class Book extends BaseItem {
 	}
 	
 	// Student
-	public Student getStudent() {
+	public User getStudent() {
 		return student;
 	}
-	public void setStudent(Student student) {
+	public void setStudent(User student) {
 		this.student = student;
 	}
 	

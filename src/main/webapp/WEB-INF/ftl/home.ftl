@@ -83,7 +83,8 @@
 				    <thead>
 					    <tr>
 					        <th>Title</th>
-					        <th>Author</th>
+					        <th class="hidden-xs">Author</th>
+					        <th>Category</th>
 					        <th>Check</th>
 					    </tr>
 				    </thead>
@@ -91,8 +92,15 @@
 					    <#list books as book>
 						    <tr>
 						        <td>${book.name}</td>
-						        <td>${book.author}</td>
-						        <td></td>
+						        <td class="hidden-xs">${book.author}</td>
+						        <td><em>${book.category.name}</em></td>
+						        <td>
+						        	<#if book.student?has_content>
+										<span class="text-muted">Unavailable</span>
+									<#else>
+										<button type="submit" class="btn btn-success">Borrow</button>
+									</#if>
+								</td>
 						    </tr>
 					    </#list>
 				    </tbody>

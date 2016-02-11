@@ -1,4 +1,4 @@
-package com.pvelychko.service.user;
+package com.pvelychko.service.impl;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -10,7 +10,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.pvelychko.domain.Book;
+import com.pvelychko.domain.User;
 import com.pvelychko.domain.repository.BookRepository;
+import com.pvelychko.service.BookService;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -49,15 +51,21 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Collection<Book> getAllAvailableBooks() {
+	public Collection<Book> getAvailableBooks() {
 		LOGGER.debug("Getting all available books");
 		return bookRepository.findAll(new Sort("name"));
 	}
 
 	@Override
-	public Collection<Book> getAllBorrowedBooks() {
+	public Collection<Book> getBorrowedBooks() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Collection<Book> getUserBooks(User student) {
+		LOGGER.debug("Getting all books for user={}", student);
+        return bookRepository.findByStudent(student);
 	}
 
 //    @Override

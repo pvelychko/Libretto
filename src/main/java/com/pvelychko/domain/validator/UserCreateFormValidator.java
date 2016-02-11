@@ -8,7 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.pvelychko.domain.UserCreateForm;
-import com.pvelychko.service.user.UserService;
+import com.pvelychko.service.UserService;
 
 @Component
 public class UserCreateFormValidator implements Validator {

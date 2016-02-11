@@ -1,4 +1,4 @@
-package com.pvelychko.service.currentuser;
+package com.pvelychko.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,16 +9,16 @@ import org.springframework.stereotype.Service;
 
 import com.pvelychko.domain.CurrentUser;
 import com.pvelychko.domain.User;
-import com.pvelychko.service.user.UserService;
+import com.pvelychko.service.UserService;
 
 @Service
-public class CurrentUserDetailsService implements UserDetailsService {
+public class CurrentUserDetailsServiceImpl implements UserDetailsService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CurrentUserDetailsService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CurrentUserDetailsServiceImpl.class);
     private final UserService userService;
 
     @Autowired
-    public CurrentUserDetailsService(UserService userService) {
+    public CurrentUserDetailsServiceImpl(UserService userService) {
         this.userService = userService;
     }
 

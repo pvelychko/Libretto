@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.pvelychko.service.user.BookService;
+import com.pvelychko.service.BookService;
 
 @Controller
 public class BooksController {
@@ -23,20 +23,18 @@ public class BooksController {
         this.bookService = bookService;
     }
 
-    /**
-     * Saves the static list of users in model and renders it 
-     * via freemarker template.
-     * 
-     * @param model 
-     * @return The index view (FTL)
-     */
-    @RequestMapping(value = "/books", method = RequestMethod.GET)
-    public String books(@ModelAttribute("model") ModelMap model) {
-        LOGGER.debug("Getting books page");
-        
-        model.addAttribute("books", bookService.getAllBooks());
-        
-        return "books";
-    }
+//    @RequestMapping(value = "/books", method = RequestMethod.GET)
+//    public String books(@ModelAttribute("model") ModelMap model) {
+//        LOGGER.debug("Getting books page");
+//        model.addAttribute("books", bookService.getAllBooks());
+//        return "books";
+//    }
+//    
+//    @RequestMapping(value = "/books/available", method = RequestMethod.GET)
+//    public String availableBooks(@ModelAttribute("model") ModelMap model) {
+//        LOGGER.debug("Getting available books page");
+//        model.addAttribute("availableBooks", bookService.getAllAvailableBooks());
+//        return "books";
+//    }
 
 }

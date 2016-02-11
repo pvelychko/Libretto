@@ -1,9 +1,10 @@
-package com.pvelychko.service.user;
+package com.pvelychko.service;
 
 import java.util.Collection;
 import java.util.Optional;
 
 import com.pvelychko.domain.Book;
+import com.pvelychko.domain.User;
 
 public interface BookService {
 
@@ -13,10 +14,12 @@ public interface BookService {
     
     Optional<Book> getBookByAuthor(String author);
 
+    Collection<Book> getUserBooks(User student);
+    
     Collection<Book> getAllBooks();
 
-    Collection<Book> getAllAvailableBooks();
+    Collection<Book> getAvailableBooks();
     
-    Collection<Book> getAllBorrowedBooks();
+    Collection<Book> getBorrowedBooks();
 
 }

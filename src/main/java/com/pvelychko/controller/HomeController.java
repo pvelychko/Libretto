@@ -9,28 +9,28 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.pvelychko.service.user.BookService;
+import com.pvelychko.service.BookService;
+import com.pvelychko.service.UserService;
 
 @Controller
 public class HomeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
 
-    private final BookService bookService;
+    //private final BookService bookService;
+
     
-    @Autowired
-    public HomeController(BookService bookService) {
-        this.bookService = bookService;
-    }
+//    @Autowired
+//    public HomeController() { // BookService bookService
+//        //this.bookService = bookService;
+//    }
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getHomePage(@ModelAttribute("model") ModelMap model) {
+        //LOGGER.debug("Getting books page"); 
+        //model.addAttribute("books", bookService.getAllBooks());
+        
         LOGGER.debug("Getting home page");
-        
-        LOGGER.debug("Getting books page");
-        
-        model.addAttribute("books", bookService.getAllBooks());
-        
         return "home";
     }
 

@@ -1,4 +1,4 @@
-package com.pvelychko.service.user;
+package com.pvelychko.service.impl;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.pvelychko.domain.User;
 import com.pvelychko.domain.UserCreateForm;
 import com.pvelychko.domain.repository.UserRepository;
+import com.pvelychko.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -19,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pvelychko.domain.User;
 import com.pvelychko.domain.UserCreateForm;
 import com.pvelychko.domain.validator.UserCreateFormValidator;
-import com.pvelychko.service.user.UserService;
+import com.pvelychko.service.BookService;
+import com.pvelychko.service.UserService;
 
 @Controller
 public class UserController {
@@ -29,11 +32,13 @@ public class UserController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
     private final UserService userService;
     private final UserCreateFormValidator userCreateFormValidator;
+    private final BookService bookService;
 
     @Autowired
-    public UserController(UserService userService, UserCreateFormValidator userCreateFormValidator) {
+    public UserController(UserService userService, UserCreateFormValidator userCreateFormValidator, BookService bookService) {
         this.userService = userService;
         this.userCreateFormValidator = userCreateFormValidator;
+        this.bookService = bookService;
     }
 
     @InitBinder("form")
@@ -43,10 +48,20 @@ public class UserController {
 
     @PreAuthorize("@currentUserServiceImpl.canAccessUser(principal, #id)")
     @RequestMapping("/user/{id}")
-    public ModelAndView getUserPage(@PathVariable Integer id) {
+    public ModelAndView getUserPage(@PathVariable Integer id, Model model) {
         LOGGER.debug("Getting user page for user={}", id);
-        return new ModelAndView("user", "user", userService.getUserById(id)
-                .orElseThrow(() -> new NoSuchElementException(String.format("User=%s not found", id))));
+        
+        User student = userService.getUserById(id).orElseThrow(() -> 
+        		new NoSuchElementException(String.format("User=%s not found", id)));
+        
+        model.addAttribute("myBooks", bookService.getUserBooks(userService.getUserById(id).get()));
+        
+        return new ModelAndView("user", "user", student);
+//        Optional<User> user = userService.getUserById(id);
+//        user.get().setBooks((List<Book>) bookService.getUserBooks(user.get()));
+        
+//        return new ModelAndView("user", "user", userService.getUserById(id)
+//                .orElseThrow(() -> new NoSuchElementException(String.format("User=%s not found", id))));
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")

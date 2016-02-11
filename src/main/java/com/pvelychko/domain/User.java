@@ -1,9 +1,15 @@
 package com.pvelychko.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +26,10 @@ public class User extends BaseItem {
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
+    
+	@OneToMany(targetEntity = Book.class)
+	@JoinColumn(name = "studentId")
+	private List<Book> books = new ArrayList<>();
     
     // Email
     public String getEmail() {
@@ -43,6 +53,14 @@ public class User extends BaseItem {
 	}
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	
+	// Books
+	public List<Book> getBooks() {
+		return books;
+	}
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 	
 }

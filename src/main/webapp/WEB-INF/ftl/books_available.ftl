@@ -1,10 +1,10 @@
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
 <#-- @ftlvariable name="currentUser" type="com.pvelychko.domain.CurrentUser" -->
-<#-- @ftlvariable name="books" type="java.util.List<com.pvelychko.domain.Book>" -->
+<#-- @ftlvariable name="availableBooks" type="java.util.List<com.pvelychko.domain.Book>" -->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Books</title>
+		<title>Available Books</title>
 	    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"></meta>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 		<meta content="IE=9" http-equiv="X-UA-Compatible"></meta>
@@ -84,7 +84,7 @@
 			    </tr>
 		    </thead>
 		    <tbody>
-			    <#books users as book>
+			    <#availableBooks users as book>
 				    <tr>
 				        <td>${book.name}</td>
 				        <td>${book.author}</td>

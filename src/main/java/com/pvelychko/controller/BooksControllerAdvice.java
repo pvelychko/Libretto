@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.pvelychko.domain.Book;
-import com.pvelychko.service.user.BookService;
+import com.pvelychko.domain.CurrentUser;
+import com.pvelychko.service.BookService;
 
 @ControllerAdvice
 public class BooksControllerAdvice {
@@ -24,9 +25,18 @@ public class BooksControllerAdvice {
     }
     
     @ModelAttribute("books")
-    public List<Book> getCurrentUser() {
+    public List<Book> getBooks() {
         return (List<Book>) bookService.getAllBooks();
     }
-
+    
+    @ModelAttribute("availableBooks")
+    public List<Book> getAvailableBooks() {
+        return (List<Book>) bookService.getAvailableBooks();
+    }
+    
+//    @ModelAttribute("myBooks")
+//    public List<Book> getMyBooks() {
+//        return (List<Book>) bookService.getUserBooks(currentUser.getUser());
+//    }
 
 }

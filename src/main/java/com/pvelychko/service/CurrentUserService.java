@@ -1,4 +1,4 @@
-package com.pvelychko.service.currentuser;
+package com.pvelychko.service;
 
 import com.pvelychko.domain.CurrentUser;
 

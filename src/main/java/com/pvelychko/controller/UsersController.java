@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.pvelychko.service.user.UserService;
+import com.pvelychko.service.UserService;
 
 @Controller
 public class UsersController {
