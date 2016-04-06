@@ -1,18 +1,24 @@
 package com.pvelychko.service;
 
 import java.util.Collection;
-import java.util.Optional;
 
 import com.pvelychko.domain.Book;
+import com.pvelychko.domain.Category;
 import com.pvelychko.domain.User;
 
+/**
+ * Book service interface
+ * @author pvelychko
+ *
+ */
 public interface BookService {
 
-    Optional<Book> getBookById(int id);
+    Book getBookById(int id);
 
-    Optional<Book> getBookByName(String name);
+    Book getBookByName(String name);
     
-    Optional<Book> getBookByAuthor(String author);
+    Book getBookByAuthor(String author);
+    Collection<Book> getBookByCategory(Category category);
 
     Collection<Book> getUserBooks(User student);
     
@@ -21,5 +27,10 @@ public interface BookService {
     Collection<Book> getAvailableBooks();
     
     Collection<Book> getBorrowedBooks();
+
+    Collection<Category> getCategories();
+    
+	Book borrowBook(Book book, User student);
+	Book returnBook(Book book);
 
 }

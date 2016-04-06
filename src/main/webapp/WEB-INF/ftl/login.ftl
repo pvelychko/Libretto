@@ -102,7 +102,7 @@
 				</div>
 			</div>
 
-			<#if error.isPresent()>
+			<#if error??>
 			<p>The email or password you have entered is invalid, try again.</p>
 			</#if>
 		</div>

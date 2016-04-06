@@ -11,22 +11,34 @@ import com.pvelychko.domain.CurrentUser;
 import com.pvelychko.domain.User;
 import com.pvelychko.service.UserService;
 
+/**
+ * Current user details implementation class
+ * @author pvelychko
+ *
+ */
 @Service
 public class CurrentUserDetailsServiceImpl implements UserDetailsService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrentUserDetailsServiceImpl.class);
     private final UserService userService;
 
+    /**
+     * Constructor
+     * @param userService
+     */
     @Autowired
     public CurrentUserDetailsServiceImpl(UserService userService) {
         this.userService = userService;
     }
 
+    /**
+     * Get user by username
+     */
     @Override
     public CurrentUser loadUserByUsername(String email) throws UsernameNotFoundException {
         LOGGER.debug("Authenticating user with email={}", email.replaceFirst("@.*", "@***"));
-        User user = userService.getUserByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("User with email=%s was not found", email)));
+        User user = userService.getUserByEmail(email);
+//                .orElseThrow(() -> new UsernameNotFoundException(String.format("User with email=%s was not found", email)));
         return new CurrentUser(user);
     }
 

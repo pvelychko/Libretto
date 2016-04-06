@@ -12,24 +12,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.pvelychko.service.BookService;
 import com.pvelychko.service.UserService;
 
+/**
+ * Home page controller class
+ * @author pvelychko
+ *
+ */
 @Controller
 public class HomeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
-
-    //private final BookService bookService;
-
     
-//    @Autowired
-//    public HomeController() { // BookService bookService
-//        //this.bookService = bookService;
-//    }
-    
+    /**
+     * Root context request mapping method
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getHomePage(@ModelAttribute("model") ModelMap model) {
-        //LOGGER.debug("Getting books page"); 
-        //model.addAttribute("books", bookService.getAllBooks());
-        
         LOGGER.debug("Getting home page");
         return "home";
     }

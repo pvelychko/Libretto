@@ -8,6 +8,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Category entity class
+ * @author pvelychko
+ *
+ */
 @Entity
 @Table(name="Categories")
 public class Category extends BaseItem {
@@ -18,9 +23,17 @@ public class Category extends BaseItem {
 	private Set<Book> books = new HashSet<>();
 
 	// Books
+	/**
+	 * Get list of books
+	 * @return
+	 */
 	public Set<Book> getBooks() {
 		return books;
 	}
+	/**
+	 * Set list of books
+	 * @param books
+	 */
 	public void setBooks(Set<Book> books) {
 		this.books = books;
 	}

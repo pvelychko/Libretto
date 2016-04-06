@@ -11,6 +11,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * Security configuration class
+ * 
+ * @author pvelychko
+ *
+ */
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
@@ -19,6 +25,9 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    /**
+     * Global application configuration method
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -41,6 +50,9 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .rememberMe();
     }
 
+    /**
+     * Authentication manager method
+     */
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth

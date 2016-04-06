@@ -9,11 +9,21 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.NoSuchElementException;
 
+/**
+ * Exception handler controller helper class
+ * @author pvelychko
+ *
+ */
 @ControllerAdvice
 public class ExceptionHandlerControllerAdvice {
 
     private static Logger LOGGER = LoggerFactory.getLogger(ExceptionHandlerControllerAdvice.class);
 
+    /**
+     * No such element handler method
+     * @param e
+     * @return error
+     */
     @ExceptionHandler(NoSuchElementException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleNoSuchElementException(NoSuchElementException e) {

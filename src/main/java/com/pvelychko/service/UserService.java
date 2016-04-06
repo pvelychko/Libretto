@@ -1,18 +1,20 @@
 package com.pvelychko.service;
 
 import java.util.Collection;
-import java.util.Optional;
-
-import javax.transaction.Transactional;
 
 import com.pvelychko.domain.User;
 import com.pvelychko.domain.UserCreateForm;
 
+/**
+ * User service interface
+ * @author pvelychko
+ *
+ */
 public interface UserService {
 
-    Optional<User> getUserById(int id);
+    User getUserById(int id);
 
-    Optional<User> getUserByEmail(String email);
+    User getUserByEmail(String email);
 
     Collection<User> getAllUsers();
 

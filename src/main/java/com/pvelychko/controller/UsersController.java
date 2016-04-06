@@ -9,17 +9,30 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pvelychko.service.UserService;
 
+/**
+ * Users controller class
+ * @author pvelychko
+ *
+ */
 @Controller
 public class UsersController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UsersController.class);
     private final UserService userService;
 
+    /**
+     * Constructor
+     * @param userService
+     */
     @Autowired
     public UsersController(UserService userService) {
         this.userService = userService;
     }
 
+    /**
+     * Get list of users
+     * @return users
+     */
     @RequestMapping("/users")
     public ModelAndView getUsersPage() {
         LOGGER.debug("Getting users page");
